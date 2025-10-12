@@ -1,93 +1,98 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Heart, MessageCircle, ShoppingBag, Users } from "lucide-react";
+import { Heart, MessageCircle, ShoppingBag, Users, Instagram, Sparkles, TrendingUp, Camera } from "lucide-react";
 import Image from "next/image";
-
-const ugcPosts = [
-  {
-    id: 1,
-    user: "@riya.mumbai",
-    location: "South Bombay",
-    likes: 2847,
-    comments: 156,
-    image: "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=600&q=80",
-    items: ["Glitch Tee", "Cyber Cargo"],
-  },
-  {
-    id: 2,
-    user: "@arjun.skate",
-    location: "Bangalore",
-    likes: 1923,
-    comments: 98,
-    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&q=80",
-    items: ["Neon Hoodie"],
-  },
-  {
-    id: 3,
-    user: "@zara.creates",
-    location: "Delhi NCR",
-    likes: 3456,
-    comments: 234,
-    image: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=600&q=80",
-    items: ["Flux Cap", "Glitch Tee"],
-  },
-  {
-    id: 4,
-    user: "@kai.explores",
-    location: "Goa",
-    likes: 1567,
-    comments: 87,
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80",
-    items: ["Cyber Cargo"],
-  },
-  {
-    id: 5,
-    user: "@maya.art",
-    location: "Pune",
-    likes: 2134,
-    comments: 145,
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&q=80",
-    items: ["Neon Hoodie", "Flux Cap"],
-  },
-  {
-    id: 6,
-    user: "@dev.vibes",
-    location: "Hyderabad",
-    likes: 1789,
-    comments: 112,
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&q=80",
-    items: ["Glitch Tee"],
-  },
-];
+import { motion } from "motion/react";
+import { UGC_POSTS } from "@/constants/ugc";
+import { SOCIAL_LINKS } from "@/constants/brand-story";
 
 export default function StyledByTribe() {
   return (
-    <section id="tribe" className="relative overflow-hidden bg-[#0D0D0D] px-6 py-24">
+    <section id="tribe" className="relative overflow-hidden bg-black px-6 py-32 md:py-40">
+      {/* Animated Background Gradient Orbs */}
+      <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-purple-500/10 rounded-full blur-[150px] animate-pulse" />
+      <div className="absolute bottom-1/4 right-1/3 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: "1s" }} />
+      
       {/* Background Pattern */}
-      <div className="absolute inset-0 grid-dots opacity-10" />
+      <div className="absolute inset-0 grid-dots opacity-5" />
 
       <div className="relative z-10 mx-auto max-w-7xl">
         {/* Section Header */}
-        <div className="mb-16 text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-white/5 px-4 py-2 ring-1 ring-white/10">
-            <Users className="h-4 w-4 gradient-flux-text" />
-            <span className="text-sm font-bold uppercase tracking-wider gradient-flux-text">
-              Community
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="mb-20 text-center"
+        >
+          {/* Badge */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="mb-6 inline-flex items-center gap-2 rounded-full bg-purple-500/10 border border-purple-500/30 px-6 py-3 backdrop-blur-sm"
+          >
+            <Users className="h-5 w-5 gradient-flux-text" />
+            <span className="text-sm font-bold uppercase tracking-widest gradient-flux-text">
+              Community Spotlight
             </span>
-          </div>
-          <h2 className="mb-4 text-5xl font-extrabold tracking-tight text-white md:text-7xl">
-            STYLED BY THE TRIBE
-          </h2>
-          <p className="mx-auto max-w-2xl text-lg text-white/60">
+            <TrendingUp className="h-4 w-4 text-green-400 animate-pulse" />
+          </motion.div>
+          
+          {/* Title */}
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="mb-6 text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight text-white leading-tight"
+          >
+            STYLED BY THE{" "}
+            <span className="gradient-flux-text">TRIBE</span>
+          </motion.h2>
+          
+          {/* Description */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="mx-auto max-w-2xl text-xl text-white/70 leading-relaxed mb-4"
+          >
             Our code is the street. Our canvas is the community. Tag{" "}
             <span className="gradient-flux-text font-bold">@flux.official</span> to be featured.
-          </p>
-        </div>
+          </motion.p>
+          
+          {/* Stats Row */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            viewport={{ once: true }}
+            className="flex items-center justify-center gap-8 text-white/60"
+          >
+            <div className="flex items-center gap-2">
+              <Camera className="w-5 h-5 text-purple-400" />
+              <span className="text-sm font-bold">2.4k+ Posts</span>
+            </div>
+            <div className="w-1 h-1 rounded-full bg-white/20" />
+            <div className="flex items-center gap-2">
+              <Heart className="w-5 h-5 text-pink-400" />
+              <span className="text-sm font-bold">156k+ Likes</span>
+            </div>
+            <div className="w-1 h-1 rounded-full bg-white/20" />
+            <div className="flex items-center gap-2">
+              <Users className="w-5 h-5 text-cyan-400" />
+              <span className="text-sm font-bold">Global Community</span>
+            </div>
+          </motion.div>
+        </motion.div>
 
         {/* UGC Grid */}
         <div className="mb-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {ugcPosts.map((post) => (
+          {UGC_POSTS.map((post) => (
             <div
               key={post.id}
               className="group relative overflow-hidden rounded-2xl border border-white/5 bg-[#1A1A1A] transition-all hover:border-white/20"
@@ -155,14 +160,27 @@ export default function StyledByTribe() {
               Share your FLUX style. Earn Tribe Points. Get access to exclusive drops.
             </p>
           </div>
-          <Button
-            size="lg"
-            variant="outline"
-            className="border-gradient-flux bg-transparent px-8 py-6 text-base font-bold text-white backdrop-blur-sm transition-all hover:scale-105 hover:bg-white/5"
-            aria-label="Submit your FLUX style photos"
-          >
-            Show Us Your FLUX
-          </Button>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer">
+              <Button
+                size="lg"
+                className="gradient-flux px-8 py-6 text-base font-bold text-black transition-all hover:scale-105 hover:shadow-2xl"
+                aria-label="Submit your FLUX style photos on Instagram"
+              >
+                Share on Instagram
+              </Button>
+            </a>
+            <a href={SOCIAL_LINKS.discord} target="_blank" rel="noopener noreferrer">
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-white/20 bg-transparent px-8 py-6 text-base font-bold text-white backdrop-blur-sm transition-all hover:scale-105 hover:bg-white/5"
+                aria-label="Join FLUX Discord community"
+              >
+                Join Discord
+              </Button>
+            </a>
+          </div>
         </div>
       </div>
     </section>

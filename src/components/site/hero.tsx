@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 
 export default function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -56,13 +57,15 @@ export default function Hero() {
 
         {/* Main Headline with Glitch Effect */}
         <h1
-          className="glitch mb-6 text-center font-extrabold leading-[0.85] tracking-tighter text-white"
-          data-text="BEYOND FABRIC. BEYOND CODE."
+          className="mb-6 text-center font-extrabold leading-[0.85] tracking-tighter text-white"
           style={{ fontSize: "clamp(2.5rem, 12vw, 8rem)" }}
         >
-          BEYOND FABRIC.
-          <br />
-          BEYOND CODE.
+          <span className="glitch block" data-text="BEYOND FABRIC.">
+            BEYOND FABRIC.
+          </span>
+          <span className="glitch block" data-text="BEYOND CODE.">
+            BEYOND CODE.
+          </span>
         </h1>
 
         {/* Gradient Subheading */}
@@ -77,26 +80,48 @@ export default function Hero() {
 
         {/* CTA Buttons */}
         <div className="flex flex-col items-center gap-4 sm:flex-row">
-          <Button
-            size="lg"
-            className="group relative overflow-hidden bg-white px-8 py-6 text-base font-bold text-[#0D0D0D] transition-all hover:scale-105 hover:shadow-2xl"
-            aria-label="Shop the NEON NOIR Collection"
+          <Link 
+            href="/#drops"
+            onClick={(e) => {
+              e.preventDefault();
+              const element = document.getElementById("drops");
+              if (element) {
+                element.scrollIntoView({ behavior: "smooth", block: "start" });
+              }
+            }}
           >
-            <span className="relative z-10 flex items-center gap-2">
-              Shop The NEON NOIR Drop
-              <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
-            </span>
-            <div className="absolute inset-0 -z-0 gradient-flux opacity-0 transition-opacity group-hover:opacity-20" />
-          </Button>
+            <Button
+              size="lg"
+              className="group relative overflow-hidden bg-white px-8 py-6 text-base font-bold text-[#0D0D0D] transition-all hover:scale-105 hover:shadow-2xl"
+              aria-label="Shop the NEON NOIR Collection"
+            >
+              <span className="relative z-10 flex items-center gap-2">
+                Shop The NEON NOIR Drop
+                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+              </span>
+              <div className="absolute inset-0 -z-0 gradient-flux opacity-0 transition-opacity group-hover:opacity-20" />
+            </Button>
+          </Link>
 
-          <Button
-            size="lg"
-            variant="outline"
-            className="border-gradient-flux bg-transparent px-8 py-6 text-base font-bold text-white backdrop-blur-sm transition-all hover:scale-105 hover:bg-white/5"
-            aria-label="Learn how FLUX works"
+          <Link 
+            href="/#story"
+            onClick={(e) => {
+              e.preventDefault();
+              const element = document.getElementById("story");
+              if (element) {
+                element.scrollIntoView({ behavior: "smooth", block: "start" });
+              }
+            }}
           >
-            How It Works
-          </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-gradient-flux bg-transparent px-8 py-6 text-base font-bold text-white backdrop-blur-sm transition-all hover:scale-105 hover:bg-white/5"
+              aria-label="Learn how FLUX works"
+            >
+              How It Works
+            </Button>
+          </Link>
         </div>
 
         {/* Trust Indicators */}

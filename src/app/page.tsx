@@ -1,4 +1,4 @@
-import BrandStory from "@/components/site/brand-story";
+import BrandStory from "@/components/site/brand-story-new";
 import FeaturedDrop from "@/components/site/featured-drop";
 import Hero from "@/components/site/hero";
 import ProductGrid from "@/components/site/product-grid";

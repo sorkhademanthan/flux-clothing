@@ -1,0 +1,58 @@
+import { UGCPost } from "@/types";
+
+export const UGC_POSTS: UGCPost[] = [
+  {
+    id: 1,
+    user: "@riya.mumbai",
+    location: "South Bombay",
+    likes: 2847,
+    comments: 156,
+    image: "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=600&q=80",
+    items: ["Glitch Tee", "Cyber Cargo"],
+  },
+  {
+    id: 2,
+    user: "@arjun.skate",
+    location: "Bangalore",
+    likes: 1923,
+    comments: 98,
+    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&q=80",
+    items: ["Neon Hoodie"],
+  },
+  {
+    id: 3,
+    user: "@zara.creates",
+    location: "Delhi NCR",
+    likes: 3456,
+    comments: 234,
+    image: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=600&q=80",
+    items: ["Flux Cap", "Glitch Tee"],
+  },
+  {
+    id: 4,
+    user: "@kai.explores",
+    location: "Goa",
+    likes: 1567,
+    comments: 87,
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80",
+    items: ["Cyber Cargo"],
+  },
+  {
+    id: 5,
+    user: "@maya.art",
+    location: "Pune",
+    likes: 2134,
+    comments: 145,
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&q=80",
+    items: ["Neon Hoodie", "Flux Cap"],
+  },
+  {
+    id: 6,
+    user: "@dev.vibes",
+    location: "Hyderabad",
+    likes: 1789,
+    comments: 112,
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&q=80",
+    items: ["Glitch Tee"],
+  },
+];
