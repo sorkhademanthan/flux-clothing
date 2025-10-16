@@ -58,54 +58,54 @@ FLUX is not just a clothing brand—it's a **phygital fashion movement** that co
 - **UI Components:** shadcn/ui + Aceternity UI
 - **Icons:** Lucide React
 
-### **Backend** (🚧 To Build)
-- **Recommended:** Node.js + Express + TypeScript
+### **Backend** (✅ Complete)
+- **Runtime:** Node.js + Express + TypeScript
 - **Database:** PostgreSQL
 - **ORM:** Prisma
-- **Cache:** Redis
-- **Queue:** Bull/BullMQ
-- **File Storage:** Cloudinary
-- **Payment:** Razorpay/Stripe
-- **Blockchain:** Polygon (NFT minting)
-- **Real-time:** Socket.io
+- **Authentication:** JWT + bcrypt
+- **Validation:** express-validator
+- **Future:** Redis, Cloudinary, Razorpay/Stripe, Polygon
 
 ---
 
-## 📁 Project Structure
+## 📁 Project Structure (Monorepo)
 
 ```
 basic-ui-project/
-├── src/
-│   ├── app/                    # Next.js pages
-│   │   ├── page.tsx           # Homepage
-│   │   ├── features/          # Features page
-│   │   └── products/          # Product catalog & details
-│   ├── components/
-│   │   ├── site/              # Page components
-│   │   │   ├── hero.tsx
-│   │   │   ├── brand-story-new.tsx
-│   │   │   ├── product-grid.tsx
-│   │   │   ├── featured-drop.tsx
-│   │   │   ├── styled-by-tribe.tsx
-│   │   │   └── navbar.tsx
-│   │   └── ui/                # 40+ reusable components
-│   ├── constants/             # Static data
-│   │   ├── brand-story.tsx
-│   │   ├── products.ts
-│   │   └── ugc.ts
-│   ├── types/                 # TypeScript types
-│   ├── lib/                   # Utilities
-│   └── hooks/                 # Custom hooks
+├── frontend/                  # Next.js Application
+│   ├── src/
+│   │   ├── app/              # Next.js pages
+│   │   │   ├── page.tsx      # Homepage
+│   │   │   ├── features/     # Features page
+│   │   │   └── products/     # Product catalog & details
+│   │   ├── components/
+│   │   │   ├── site/         # Page components
+│   │   │   └── ui/           # 40+ reusable components
+│   │   ├── constants/        # Static data
+│   │   ├── types/            # TypeScript types
+│   │   ├── lib/              # Utilities
+│   │   └── hooks/            # Custom hooks
+│   ├── public/               # Static assets
+│   └── package.json
+│
+├── backend/                   # Express API
+│   ├── src/
+│   │   ├── controllers/      # Route handlers
+│   │   ├── routes/           # API endpoints
+│   │   ├── middleware/       # Auth, validation, error handling
+│   │   ├── config/           # Configuration
+│   │   └── server.ts         # Entry point
+│   ├── prisma/
+│   │   └── schema.prisma     # Database schema
+│   └── package.json
+│
 ├── docs/                      # 📚 Complete documentation
-│   ├── README.md              # Docs index
-│   ├── PROJECT_OVERVIEW.md    # ⭐ START HERE (Backend guide)
-│   ├── CATALOG_COMPLETE.md
-│   ├── COLLECTION_AND_COMMUNITY_IMPROVEMENTS.md
-│   ├── PRODUCT_DETAIL_PAGE.md
-│   ├── NAVIGATION_FLOW.md
+│   ├── README.md             # Docs index
+│   ├── PROJECT_OVERVIEW.md   # ⭐ START HERE
 │   └── ... (15 docs total)
-├── public/                    # Static assets
-└── README.md                  # This file
+│
+├── package.json              # Root scripts
+└── README.md                 # This file
 ```
 
 ---
@@ -114,6 +114,7 @@ basic-ui-project/
 
 ### **Prerequisites:**
 - Node.js 20+
+- PostgreSQL 14+
 - npm or yarn
 - Git
 
@@ -124,24 +125,59 @@ basic-ui-project/
 git clone <your-repo-url>
 cd basic-ui-project
 
-# Install dependencies
-npm install
+# Install all dependencies (root, frontend, backend)
+npm run install:all
 
-# Run development server
+# Or install individually
+npm install              # Root
+cd frontend && npm install
+cd ../backend && npm install
+```
+
+### **Backend Setup:**
+
+```bash
+# Configure environment
+cd backend
+cp .env.example .env
+# Edit .env with your database URL and secrets
+
+# Setup database
+npm run prisma:generate
+npm run prisma:migrate
+
+# Optional: Open Prisma Studio
+npm run prisma:studio
+```
+
+### **Development:**
+
+```bash
+# From root: Run both frontend and backend
 npm run dev
 
-# Open browser
-# Visit http://localhost:3000
+# Or run individually
+npm run dev:frontend   # Frontend on http://localhost:3000
+npm run dev:backend    # Backend on http://localhost:5000
+
+# Or run from each folder
+cd frontend && npm run dev
+cd backend && npm run dev
 ```
 
 ### **Build for Production:**
 
 ```bash
-# Build the app
+# Build both
 npm run build
 
-# Start production server
-npm start
+# Or build individually
+npm run build:frontend
+npm run build:backend
+
+# Start production servers
+npm run start:frontend
+npm run start:backend
 ```
 
 ---

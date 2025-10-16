@@ -9,9 +9,9 @@ export default function Home() {
     <main className="overflow-x-hidden">
       <Hero />
       <FeaturedDrop />
-      <BrandStory />
       <ProductGrid />
       <StyledByTribe />
+      <BrandStory />
     </main>
   );
 }

@@ -274,50 +274,56 @@ function OpeningStatement() {
 
 function JourneySection() {
   return (
-    <div id="journey" className="relative px-6 py-32 md:px-12 lg:px-20 bg-black/40">
-      {/* Subtle particle effect */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <FloatingParticles count={15} />
-      </div>
+    <div id="journey" className="relative px-6 py-24 md:py-32 md:px-12 lg:px-20 bg-black border-t border-white/10">
+      {/* Subtle gradient orbs for depth */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[120px]" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-cyan-500/10 rounded-full blur-[120px]" />
       
       <div className="relative z-10 mx-auto max-w-7xl">
+        {/* Section Header - Principle: Visual Hierarchy */}
         <motion.div 
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
           className="mb-20 text-center"
         >
-          <motion.p 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            viewport={{ once: true }}
-            className="mb-4 text-sm font-bold uppercase tracking-widest gradient-flux-text"
+          {/* Badge - Principle: Clarity */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.4, delay: 0.1 }}
+            className="mb-6 inline-flex items-center gap-2 px-5 py-2.5 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full"
           >
-            Your Journey
-          </motion.p>
+            <Sparkles className="h-4 w-4 gradient-flux-text" />
+            <span className="text-sm font-bold uppercase tracking-widest gradient-flux-text">Your Journey</span>
+          </motion.div>
+          
+          {/* Title - Principle: Visual Hierarchy (Size = Importance) */}
           <motion.h3 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
+            transition={{ delay: 0.2 }}
             viewport={{ once: true }}
-            className="text-4xl font-extrabold text-white md:text-5xl mb-4"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
           >
             How FLUX <span className="gradient-flux-text">Works</span>
           </motion.h3>
+          
+          {/* Description - Principle: Clarity */}
           <motion.p 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
+            transition={{ delay: 0.3 }}
             viewport={{ once: true }}
-            className="text-white/70 text-lg max-w-2xl mx-auto"
+            className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed"
           >
             From choosing your gear to shaping the future - here&apos;s your path to joining the phygital revolution
           </motion.p>
         </motion.div>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        {/* Journey Cards - Principle: Consistency & Affordance */}
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 mb-16">
           {JOURNEY_STEPS.map((step, idx) => {
             const Icon = step.icon;
             return (
@@ -325,48 +331,35 @@ function JourneySection() {
                 key={step.number}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.1 }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
                 viewport={{ once: true }}
-                className="relative group cursor-default"
+                className="relative group"
               >
-                <motion.div 
-                  whileHover={{ 
-                    y: -8,
-                    boxShadow: "0 20px 40px rgba(255,0,255,0.2)"
-                  }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  className="h-full p-8 rounded-2xl border border-white/10 bg-black/60 backdrop-blur-sm hover:border-white/20 transition-colors relative overflow-hidden"
-                >
-                  {/* Animated gradient on hover */}
-                  <motion.div
-                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                    style={{
-                      background: "radial-gradient(600px at var(--mouse-x) var(--mouse-y), rgba(255,0,255,0.05), transparent 40%)"
-                    }}
-                  />
-                  
-                  <div className="relative z-10">
-                    <motion.div 
-                      className="absolute -top-4 -left-4 w-12 h-12 rounded-full gradient-flux flex items-center justify-center"
-                      whileHover={{ scale: 1.1, rotate: 360 }}
-                      transition={{ duration: 0.6 }}
-                    >
-                      <span className="text-black font-extrabold text-lg">{step.number}</span>
-                    </motion.div>
-                    <motion.div 
-                      className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-white/5 border border-white/10"
-                      whileHover={{ scale: 1.1, rotate: 5 }}
-                      transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                    >
-                      <Icon className="h-8 w-8 text-white" />
-                    </motion.div>
-                    <h4 className="text-xl font-extrabold text-white mb-3 group-hover:gradient-flux-text transition-all duration-300">{step.title}</h4>
-                    <p className="text-white/70 leading-relaxed group-hover:text-white/90 transition-colors">{step.description}</p>
+                {/* Card - Principle: Affordance & Feedback */}
+                <div className="h-full p-8 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm hover:border-white/20 hover:bg-white/10 transition-all duration-300 relative overflow-hidden">
+                  {/* Number Badge - Principle: Clarity */}
+                  <div className="absolute top-4 right-4 w-10 h-10 rounded-full gradient-flux flex items-center justify-center">
+                    <span className="text-black font-extrabold text-sm">{step.number}</span>
                   </div>
-                </motion.div>
+                  
+                  {/* Icon - Principle: Visual Hierarchy */}
+                  <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-white/5 border border-white/10 group-hover:scale-110 group-hover:border-white/20 transition-all duration-300">
+                    <Icon className="h-7 w-7 text-white" />
+                  </div>
+                  
+                  {/* Content - Principle: Clarity & Simplicity */}
+                  <h4 className="text-xl font-bold text-white mb-3 group-hover:gradient-flux-text transition-all duration-300">
+                    {step.title}
+                  </h4>
+                  <p className="text-base text-white/60 leading-relaxed group-hover:text-white/80 transition-colors">
+                    {step.description}
+                  </p>
+                </div>
+                
+                {/* Arrow Connector - Principle: Context */}
                 {idx < JOURNEY_STEPS.length - 1 && (
-                  <div className="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2">
-                    <ChevronRight className="w-8 h-8 text-white/20" />
+                  <div className="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 z-10">
+                    <ChevronRight className="w-6 h-6 text-white/20" />
                   </div>
                 )}
               </motion.div>
@@ -374,7 +367,14 @@ function JourneySection() {
           })}
         </div>
 
-        <div className="mt-16 text-center">
+        {/* CTA - Principle: Affordance (Primary action clear) */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          viewport={{ once: true }}
+          className="text-center"
+        >
           <Link 
             href="/#shop" 
             onClick={(e) => {
@@ -384,12 +384,12 @@ function JourneySection() {
                 element.scrollIntoView({ behavior: "smooth", block: "start" });
               }
             }}
-            className="group inline-flex items-center gap-2 px-8 py-4 gradient-flux text-black font-bold rounded-full hover:opacity-90 transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(255,0,255,0.4)]"
+            className="group inline-flex items-center gap-2 px-10 py-6 gradient-flux text-black font-bold rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all shadow-2xl hover:shadow-[0_0_40px_rgba(168,85,247,0.4)]"
           >
             Browse Collections
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Link>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
@@ -397,81 +397,75 @@ function JourneySection() {
 
 function DeepDiveSection() {
   return (
-    <div id="story-deep-dive" className="relative px-6 py-32 md:px-12 lg:px-20">
-      {/* Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-900/5 to-transparent" />
+    <div id="story-deep-dive" className="relative px-6 py-24 md:py-32 md:px-12 lg:px-20 bg-black border-t border-white/10">
+      {/* Subtle gradient orbs for depth */}
+      <div className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-purple-500/10 rounded-full blur-[120px]" />
+      <div className="absolute bottom-1/4 left-1/4 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[120px]" />
       
       <div className="relative z-10">
-        {/* Section Header with Animation */}
+        {/* Section Header - Principle: Visual Hierarchy */}
         <motion.div 
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
           className="mb-20 text-center"
         >
+          {/* Badge - Principle: Clarity & Delight */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="mb-6 inline-flex items-center gap-2 rounded-full border border-purple-500/30 bg-purple-500/5 px-6 py-2 backdrop-blur-sm"
+            transition={{ duration: 0.4, delay: 0.1 }}
+            className="mb-6 inline-flex items-center gap-2 px-5 py-2.5 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full"
           >
             <div className="h-2 w-2 rounded-full bg-purple-500 animate-pulse" />
-            <p className="text-sm font-bold uppercase tracking-widest gradient-flux-text">Deep Dive</p>
+            <span className="text-sm font-bold uppercase tracking-widest gradient-flux-text">Deep Dive</span>
           </motion.div>
           
+          {/* Title - Principle: Visual Hierarchy (Size = Importance) */}
           <motion.h3 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="text-5xl font-extrabold text-white md:text-6xl lg:text-7xl mb-6"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
           >
             Explore Our{" "}
             <span className="gradient-flux-text">Journey</span>
           </motion.h3>
           
+          {/* Description - Principle: Clarity */}
           <motion.p 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
-            className="text-white/70 text-xl max-w-3xl mx-auto leading-relaxed"
+            className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed"
           >
             Discover the story behind FLUX - from our humble beginnings in Mumbai 
             to building a global movement. <span className="text-white font-semibold">Click any card</span> to dive deeper.
           </motion.p>
-
-          {/* Visual Separator */}
-          <motion.div
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            transition={{ duration: 1, delay: 0.8 }}
-            viewport={{ once: true }}
-            className="mt-12 mx-auto w-24 h-1 gradient-flux rounded-full"
-          />
         </motion.div>
 
-        {/* Enhanced Cards */}
+        {/* Expandable Cards - Principle: Affordance & Feedback */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
         >
           <ExpandableCards cards={STORY_CARDS} />
         </motion.div>
 
-        {/* Bottom Hint */}
+        {/* Bottom Hint - Principle: Context */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
           viewport={{ once: true }}
           className="mt-16 text-center"
         >
-          <p className="text-white/50 text-sm">
+          <p className="text-base text-white/50">
             <span className="gradient-flux-text font-bold">Pro tip:</span> Each card reveals exclusive insights into our brand philosophy
           </p>
         </motion.div>
