@@ -248,7 +248,7 @@ export default function FeaturedDrop() {
 
             {/* Title - Enhanced with stagger word reveal and gradient animation */}
             <div className="space-y-6">
-              <h2 className="text-6xl md:text-7xl lg:text-8xl font-black leading-[0.9] tracking-tight">
+              <h2 className="text-6xl md:text-7xl lg:text-8xl font-black leading-[0.85] tracking-tight">
                 <motion.span
                   initial={{ opacity: 0, y: 50, filter: "blur(10px)" }}
                   whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -258,13 +258,12 @@ export default function FeaturedDrop() {
                 >
                   NEON
                 </motion.span>
-                <br />
                 <motion.span
                   initial={{ opacity: 0, y: 50, filter: "blur(10px)" }}
                   whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                   transition={{ duration: 0.6, delay: 0.4 }}
                   viewport={{ once: true }}
-                  className="block gradient-flux-text relative"
+                  className="block gradient-flux-text relative -mt-4 md:-mt-6 lg:-mt-8"
                 >
                   NOIR
                   {/* Animated gradient underline */}
