@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { 
-  ArrowLeft, ShoppingBag, Heart, Eye, Filter, Search, 
+  ArrowLeft, ShoppingBag, Heart, Eye, Search, 
   TrendingUp, Sparkles, Grid3x3, LayoutGrid, Star, 
   X, ChevronDown, SlidersHorizontal 
 } from "lucide-react";
@@ -156,7 +156,7 @@ export default function ProductsPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [view, setView] = useState<"grid" | "large">("grid");
   const [sortBy, setSortBy] = useState("Newest First");
-  const [showFilters, setShowFilters] = useState(false);
+  // const [showFilters, setShowFilters] = useState(false);
   const [priceRange, setPriceRange] = useState([0, 10000]);
   const [showSortDropdown, setShowSortDropdown] = useState(false);
   const [likedProducts, setLikedProducts] = useState<Set<number>>(new Set());
