@@ -46,7 +46,7 @@ export default function Hero() {
       />
 
       {/* Content */}
-      <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 py-24">
+      <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 py-16">
         {/* Eyebrow Badge */}
         <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 backdrop-blur-sm">
           <Sparkles className="h-4 w-4 gradient-flux-text" />
@@ -125,7 +125,7 @@ export default function Hero() {
         </div>
 
         {/* Trust Indicators */}
-        <div className="mt-16 flex flex-wrap items-center justify-center gap-8 text-sm font-medium text-white/40">
+        <div className="mt-12 flex flex-wrap items-center justify-center gap-8 text-sm font-medium text-white/40">
           <div className="flex items-center gap-2">
             <div className="h-2 w-2 animate-pulse rounded-full gradient-flux" />
             <span>Forever Scarce</span>

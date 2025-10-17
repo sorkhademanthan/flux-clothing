@@ -41,7 +41,7 @@ function OpeningStatement() {
   }, []);
 
   return (
-    <div className="relative min-h-screen flex items-center border-b border-white/10 px-6 py-32 md:px-12 lg:px-20 overflow-hidden"
+    <div className="relative min-h-[85vh] flex items-center border-b border-white/10 px-6 py-20 md:px-12 lg:px-20 overflow-hidden"
     >
       {/* EPIC Cinematic Background */}
       <div className="absolute inset-0">
@@ -457,7 +457,7 @@ function JourneySection() {
   ];
   
   return (
-    <div id="journey" className="relative px-6 py-32 md:py-40 md:px-12 lg:px-20 bg-black border-t border-white/10 overflow-hidden">
+    <div id="journey" className="relative px-6 py-20 md:py-28 md:px-12 lg:px-20 bg-black border-t border-white/10 overflow-hidden">
       {/* Spectacular Background */}
       <div className="absolute inset-0">
         {/* Animated mesh gradient */}
@@ -510,7 +510,7 @@ function JourneySection() {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="mb-24 text-center"
+          className="mb-16 text-center"
         >
           {/* Glowing badge */}
           <motion.div
@@ -783,16 +783,7 @@ function JourneySection() {
             }}
           />
           
-          <Link 
-            href="/#shop" 
-            onClick={(e) => {
-              e.preventDefault();
-              const element = document.getElementById("shop");
-              if (element) {
-                element.scrollIntoView({ behavior: "smooth", block: "start" });
-              }
-            }}
-          >
+          <Link href="/products">
             <motion.button
               className="relative group px-12 py-6 text-lg font-bold rounded-2xl overflow-hidden"
               whileHover={{ scale: 1.05 }}
@@ -846,7 +837,7 @@ function JourneySection() {
 
 function DeepDiveSection() {
   return (
-    <div id="story-deep-dive" className="relative px-6 py-32 md:py-48 md:px-12 lg:px-20 border-t border-white/10 bg-black overflow-hidden">
+    <div id="story-deep-dive" className="relative px-6 py-20 md:py-28 md:px-12 lg:px-20 border-t border-white/10 bg-black overflow-hidden">
       {/* EPIC Background Effects */}
       <div className="absolute inset-0">
         {/* Radial spotlight */}
@@ -918,7 +909,7 @@ function DeepDiveSection() {
       
       <div className="relative z-10">
         {/* EPIC Section Header */}
-        <div className="mb-24 text-center">
+        <div className="mb-16 text-center">
           {/* Premium badge with glow */}
           <motion.div
             initial={{ opacity: 0, scale: 0.5, rotateX: -90 }}
@@ -1132,7 +1123,7 @@ function DeepDiveSection() {
 
 function FinalCTA() {
   return (
-    <div className="border-t border-white/10 bg-gradient-to-b from-black to-[#0A0A0A] px-6 py-32 md:py-40 md:px-12 lg:px-20 relative overflow-hidden">
+    <div className="border-t border-white/10 bg-gradient-to-b from-black to-[#0A0A0A] px-6 py-20 md:py-28 md:px-12 lg:px-20 relative overflow-hidden">
       {/* Subtle background glow */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-gradient-to-r from-purple-500/20 to-cyan-500/20 rounded-full blur-[120px]" />
@@ -1210,21 +1201,43 @@ function FinalCTA() {
         >
           {/* Primary CTA */}
           <Link 
-            href="/#shop" 
-            onClick={(e) => {
-              e.preventDefault();
-              const element = document.getElementById("shop");
-              if (element) {
-                element.scrollIntoView({ behavior: "smooth", block: "start" });
-              }
-            }}
+            href="/products"
             className="group relative inline-flex items-center gap-3 px-10 py-5 bg-white text-black font-bold text-lg rounded-full overflow-hidden transition-transform hover:scale-105"
           >
-            <span>Shop the Collection</span>
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            {/* Animated gradient background */}
+            <motion.div
+              className="absolute inset-0"
+              animate={{
+                backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "linear"
+              }}
+              style={{
+                background: "linear-gradient(90deg, #ffffff 0%, #f0f0f0 50%, #ffffff 100%)",
+                backgroundSize: "200% 100%",
+              }}
+            />
             
-            {/* Subtle glow on hover */}
-            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full shadow-[0_0_30px_rgba(255,255,255,0.5)]" />
+            {/* Shimmer overlay */}
+            <motion.div
+              className="absolute inset-0 -translate-x-full group-hover:translate-x-full"
+              transition={{ duration: 0.8 }}
+              style={{
+                background: "linear-gradient(90deg, transparent, rgba(168,85,247,0.3), transparent)",
+              }}
+            />
+            
+            <span className="relative z-10">Shop the Collection</span>
+            <motion.div
+              className="relative z-10"
+              animate={{ x: [0, 5, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </motion.div>
           </Link>
           
           {/* Secondary CTA */}

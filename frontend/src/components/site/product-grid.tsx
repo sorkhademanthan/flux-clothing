@@ -13,7 +13,7 @@ export default function ProductGrid() {
   const [hoveredProduct, setHoveredProduct] = useState<number | null>(null);
   
   return (
-    <section id="shop" className="relative overflow-hidden bg-black px-6 py-32 md:py-48 md:px-12 lg:px-20">
+    <section id="shop" className="relative overflow-hidden bg-black px-6 py-20 md:py-28 md:px-12 lg:px-20">
       {/* EPIC Background */}
       <div className="absolute inset-0">
         {/* Radial spotlight */}
@@ -62,7 +62,7 @@ export default function ProductGrid() {
 
       <div className="relative z-10 mx-auto max-w-7xl">
         {/* EPIC Section Header */}
-        <div className="mb-24 text-center">
+        <div className="mb-16 text-center">
           {/* Premium Badge */}
           <motion.div
             initial={{ opacity: 0, scale: 0.5, rotateX: -90 }}
@@ -198,16 +198,17 @@ export default function ProductGrid() {
             >
               <Link 
                 href={`/products/${product.name.toLowerCase().replace(/\s+/g, '-')}`}
-                className="group relative overflow-hidden rounded-3xl border-2 border-white/10 bg-black/60 backdrop-blur-sm transition-all hover:border-white/30 block"
+                className="group relative overflow-hidden rounded-3xl border-2 border-white/10 bg-black/60 backdrop-blur-sm transition-all hover:border-purple-500/50 hover:shadow-[0_0_60px_rgba(168,85,247,0.3)] block"
               >
                 {/* Animated gradient border glow */}
                 <motion.div 
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-3xl"
+                  className="absolute -inset-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-3xl -z-10 blur-xl"
                   animate={hoveredProduct === product.id ? {
                     background: [
-                      "linear-gradient(135deg, rgba(168,85,247,0.4), rgba(6,182,212,0.4))",
-                      "linear-gradient(225deg, rgba(6,182,212,0.4), rgba(168,85,247,0.4))",
-                      "linear-gradient(135deg, rgba(168,85,247,0.4), rgba(6,182,212,0.4))",
+                      "linear-gradient(135deg, rgba(168,85,247,0.6), rgba(6,182,212,0.6))",
+                      "linear-gradient(225deg, rgba(6,182,212,0.6), rgba(168,85,247,0.6))",
+                      "linear-gradient(315deg, rgba(168,85,247,0.6), rgba(6,182,212,0.6))",
+                      "linear-gradient(135deg, rgba(168,85,247,0.6), rgba(6,182,212,0.6))",
                     ],
                   } : {}}
                   transition={{
@@ -297,11 +298,12 @@ export default function ProductGrid() {
                   
                   {/* Product Name with hover effect */}
                   <motion.h3 
-                    className="mb-4 text-2xl font-black text-white line-clamp-1"
+                    className="mb-4 text-2xl font-black text-white line-clamp-1 group-hover:gradient-flux-text transition-all duration-300"
                     whileHover={{ 
                       scale: 1.02,
-                      textShadow: "0 0 10px rgba(255,255,255,0.3)"
+                      textShadow: "0 0 20px rgba(168,85,247,0.5)"
                     }}
+                    transition={{ duration: 0.3 }}
                   >
                     {product.name}
                   </motion.h3>
@@ -339,20 +341,28 @@ export default function ProductGrid() {
                       <span className="text-3xl font-black gradient-flux-text">{product.price}</span>
                     </div>
                     <motion.div
-                      whileHover={{ scale: 1.05 }}
+                      whileHover={{ scale: 1.05, rotate: [0, -5, 5, 0] }}
                       whileTap={{ scale: 0.95 }}
+                      transition={{ rotate: { duration: 0.5 } }}
                     >
                       <Button
                         size="lg"
                         className={`${
                           product.inStock
-                            ? "bg-white text-black hover:bg-white/90 shadow-[0_0_20px_rgba(255,255,255,0.3)]"
+                            ? "bg-white text-black hover:bg-white/90 shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_40px_rgba(168,85,247,0.5)]"
                             : "bg-white/10 text-white/40 cursor-not-allowed"
-                        } transition-all font-black rounded-full px-6 py-6`}
+                        } transition-all font-black rounded-full px-6 py-6 relative overflow-hidden group/btn`}
                         disabled={!product.inStock}
                       >
-                        <ShoppingCart className="mr-2 h-5 w-5" />
-                        {product.inStock ? "Add to Cart" : "Notify Me"}
+                        {/* Shimmer effect on hover */}
+                        <motion.div
+                          className="absolute inset-0 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700"
+                          style={{
+                            background: "linear-gradient(90deg, transparent, rgba(168,85,247,0.3), transparent)",
+                          }}
+                        />
+                        <ShoppingCart className="mr-2 h-5 w-5 relative z-10" />
+                        <span className="relative z-10">{product.inStock ? "Add to Cart" : "Notify Me"}</span>
                       </Button>
                     </motion.div>
                   </div>
@@ -377,7 +387,7 @@ export default function ProductGrid() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           viewport={{ once: true }}
-          className="mt-20 relative"
+          className="mt-16 relative"
         >
           {/* Subtle background glow */}
           <motion.div

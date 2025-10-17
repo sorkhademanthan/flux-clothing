@@ -9,7 +9,7 @@ import { SOCIAL_LINKS } from "@/constants/brand-story";
 
 export default function StyledByTribe() {
   return (
-    <section id="tribe" className="relative overflow-hidden bg-black px-6 py-32 md:py-40">
+    <section id="tribe" className="relative overflow-hidden bg-black px-6 py-20 md:py-28">
       {/* Animated Background Gradient Orbs */}
       <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-purple-500/10 rounded-full blur-[150px] animate-pulse" />
       <div className="absolute bottom-1/4 right-1/3 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: "1s" }} />
@@ -24,7 +24,7 @@ export default function StyledByTribe() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="mb-20 text-center"
+          className="mb-14 text-center"
         >
           {/* Badge */}
           <motion.div
@@ -96,7 +96,7 @@ export default function StyledByTribe() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="mb-16"
+          className="mb-12"
         >
           <div className="flex items-center gap-3 mb-6">
             <Sparkles className="w-6 h-6 gradient-flux-text" />
@@ -221,7 +221,7 @@ export default function StyledByTribe() {
         </motion.div>
 
         {/* UGC Grid */}
-        <div className="mb-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mb-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {UGC_POSTS.slice(1).map((post, idx) => (
             <motion.div
               key={post.id}
@@ -333,7 +333,7 @@ export default function StyledByTribe() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-20"
+          className="text-center mb-14"
         >
           <motion.button
             whileHover={{ scale: 1.05 }}
@@ -371,10 +371,10 @@ export default function StyledByTribe() {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
-              className="inline-flex items-center gap-2 mb-4 px-4 py-2 bg-purple-500/10 border border-purple-500/30 rounded-full"
+              className="inline-flex items-center gap-2 mb-6 px-5 py-2.5 bg-purple-500/10 border border-purple-500/30 rounded-full"
             >
-              <Sparkles className="w-4 h-4 text-purple-400" />
-              <span className="text-sm font-bold text-purple-300 uppercase tracking-wider">Be Featured</span>
+              <Sparkles className="w-5 h-5 text-purple-400" />
+              <span className="text-base font-bold text-purple-300 uppercase tracking-wider">Be Featured</span>
             </motion.div>
             
             <motion.h3
@@ -382,7 +382,7 @@ export default function StyledByTribe() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
               viewport={{ once: true }}
-              className="mb-4 text-4xl md:text-5xl font-extrabold text-white"
+              className="mb-6 text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight"
             >
               Join the <span className="gradient-flux-text">Movement</span>
             </motion.h3>
@@ -392,9 +392,9 @@ export default function StyledByTribe() {
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.4 }}
               viewport={{ once: true }}
-              className="mx-auto max-w-xl text-lg text-white/70 leading-relaxed"
+              className="mx-auto max-w-2xl text-lg md:text-xl text-white/70 leading-relaxed"
             >
-              Share your FLUX style. Earn Tribe Points. Get access to exclusive drops.
+              Share your FLUX style. <span className="text-white font-bold">Earn Tribe Points.</span> Get access to <span className="text-white font-bold">exclusive drops.</span>
             </motion.p>
           </div>
           
@@ -403,26 +403,28 @@ export default function StyledByTribe() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
             viewport={{ once: true }}
-            className="flex flex-wrap gap-4 justify-center"
+            className="flex flex-wrap gap-5 justify-center"
           >
             <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer">
               <motion.button
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="gradient-flux px-8 py-4 text-base font-bold text-black rounded-full transition-all shadow-xl hover:shadow-2xl flex items-center gap-2"
+                className="gradient-flux px-10 py-5 text-lg font-bold text-black rounded-full transition-all shadow-2xl hover:shadow-[0_0_40px_rgba(168,85,247,0.5)] flex items-center gap-3 relative overflow-hidden group"
               >
-                <Instagram className="w-5 h-5" />
-                Share on Instagram
+                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+                <Instagram className="w-6 h-6 relative z-10" />
+                <span className="relative z-10">Share on Instagram</span>
               </motion.button>
             </a>
             <a href={SOCIAL_LINKS.discord} target="_blank" rel="noopener noreferrer">
               <motion.button
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="border-2 border-white/20 hover:border-white/40 bg-transparent px-8 py-4 text-base font-bold text-white backdrop-blur-sm rounded-full transition-all flex items-center gap-2"
+                className="border-2 border-white/30 hover:border-white/50 bg-white/5 hover:bg-white/10 px-10 py-5 text-lg font-bold text-white backdrop-blur-sm rounded-full transition-all flex items-center gap-3 relative overflow-hidden group"
               >
-                <MessageCircle className="w-5 h-5" />
-                Join Discord
+                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                <MessageCircle className="w-6 h-6 relative z-10" />
+                <span className="relative z-10">Join Discord</span>
               </motion.button>
             </a>
           </motion.div>

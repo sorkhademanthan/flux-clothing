@@ -128,7 +128,7 @@ export default function FeaturedDrop() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="drops" className="relative overflow-hidden bg-black py-24 lg:py-32">
+    <section ref={sectionRef} id="drops" className="relative overflow-hidden bg-black py-16 lg:py-20">
       {/* Animated gradient orbs with pulse */}
       <motion.div 
         animate={{
@@ -179,7 +179,7 @@ export default function FeaturedDrop() {
       
       <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12">
         {/* Split Layout - Clear Visual Hierarchy */}
-        <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr] lg:gap-20 items-center mb-32">
+        <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr] lg:gap-20 items-center mb-20">
           {/* Left Content - Principle: Clarity & Visual Hierarchy */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
