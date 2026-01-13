@@ -45,31 +45,21 @@
 
 :root {
   --radius: 0.625rem;
-  --flux-black: #0D0D0D;
-  --flux-card: #1A1A1A;
-  --flux-white: #FFFFFF;
-  --flux-gray: #A0A0A0;
   
-  /* Gradient Options - Uncomment to test different combinations */
-  /* Option 1: Original Magenta-Cyan (Bold & Vibrant) */
-  --flux-gradient-start: #FF00FF;
-  --flux-gradient-end: #00FFFF;
+  /* THEME: "Redline" (Crimson & Graphite)
+     A high-performance aesthetics pallet. 
+     Deep matte graphite backgrounds with aggressive, sharp crimson accents.
+     Feels like premium tactical gear or a high-end sports car dashboard.
+  */
   
-  /* Option 2: Purple-Blue (Sophisticated & Tech) */
-  /* --flux-gradient-start: #8B5CF6; */
-  /* --flux-gradient-end: #3B82F6; */
+  --flux-black: #0A0A0A; /* Smooth matte black, not harsh */
+  --flux-card: #141414;  /* Slightly lighter graphite */
+  --flux-white: #FAFAFA; /* Pure white text for max contrast */
+  --flux-gray: #525252;  /* Mechanical grey */
   
-  /* Option 3: Orange-Pink (Sunset Energy) */
-  /* --flux-gradient-start: #F97316; */
-  /* --flux-gradient-end: #EC4899; */
-  
-  /* Option 4: Green-Cyan (Matrix Tech) */
-  /* --flux-gradient-start: #10B981; */
-  /* --flux-gradient-end: #06B6D4; */
-  
-  /* Option 5: Red-Purple (Intense & Bold) */
-  /* --flux-gradient-start: #EF4444; */
-  /* --flux-gradient-end: #A855F7; */
+  /* BOLD NEW GRADIENT: "Velocity" (Bright Crimson -> Deep Red) */
+  --flux-gradient-start: #EF4444; /* Vivid Red */
+  --flux-gradient-end: #991B1B;   /* Deep Blood Red */
   
   --background: var(--flux-black);
   --foreground: var(--flux-white);
@@ -81,14 +71,14 @@
   --primary-foreground: var(--flux-black);
   --secondary: var(--flux-card);
   --secondary-foreground: var(--flux-white);
-  --muted: #2A2A2A;
+  --muted: #262626;
   --muted-foreground: var(--flux-gray);
-  --accent: var(--flux-magenta);
+  --accent: var(--flux-gradient-start);
   --accent-foreground: var(--flux-white);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: rgba(255, 255, 255, 0.1);
-  --input: rgba(255, 255, 255, 0.1);
-  --ring: var(--flux-cyan);
+  --destructive: #7F1D1D;
+  --border: rgba(255, 255, 255, 0.08);
+  --input: rgba(255, 255, 255, 0.08);
+  --ring: var(--flux-gradient-start); /* Red ring focus */
 }
 
 .dark {
@@ -154,11 +144,11 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #0D0D0D;
+    background: var(--flux-black);
   }
 
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, var(--flux-gradient-start), var(--flux-gradient-end));
+    background: linear-gradient(180deg, var(--flux-gradient-start), var(--flux-gradient-end));
     border-radius: 5px;
   }
 
@@ -312,22 +302,24 @@
     height: 100%;
   }
   
+  /* Updated Glitch Shadows for Red Scale */
   .glitch::before {
     left: 2px;
-    text-shadow: -2px 0 #FF00FF;
+    text-shadow: -2px 0 var(--flux-gradient-start); /* Red Shadow */
     clip: rect(44px, 450px, 56px, 0);
     animation: glitch-anim 5s infinite linear alternate-reverse;
   }
   
   .glitch::after {
     left: -2px;
-    text-shadow: -2px 0 #00FFFF;
+    text-shadow: -2px 0 #FFFFFF; /* White Shadow (for severe contrast) */
     clip: rect(44px, 450px, 56px, 0);
     animation: glitch-anim2 4s infinite linear alternate-reverse;
   }
   
+  /* Cleaner grid */
   .grid-dots {
-    background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.05) 1px, transparent 0);
+    background-image: radial-gradient(circle at 1px 1px, rgba(239, 68, 68, 0.15) 1px, transparent 0); /* Subtle Red dots */
     background-size: 40px 40px;
   }
   
@@ -335,14 +327,16 @@
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.15'/%3E%3C/svg%3E");
   }
   
+  /* Red Glow */
   .glow-flux {
-    box-shadow: 0 0 40px rgba(255, 0, 255, 0.3), 0 0 80px rgba(0, 255, 255, 0.2);
+    box-shadow: 0 0 40px rgba(239, 68, 68, 0.2), 0 0 80px rgba(153, 27, 27, 0.1);
   }
   
+  /* Red Gradient Border */
   .border-gradient-flux {
     border: 1px solid transparent;
-    background: linear-gradient(#0D0D0D, #0D0D0D) padding-box,
-                linear-gradient(135deg, #FF00FF, #00FFFF) border-box;
+    background: linear-gradient(var(--flux-black), var(--flux-black)) padding-box,
+                linear-gradient(135deg, var(--flux-gradient-start), var(--flux-gradient-end)) border-box;
   }
 }
 
